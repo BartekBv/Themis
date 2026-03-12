@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(0); 
+    cin.tie(0);
+    cout.tie(0);
+
+    int q;
+    cin >> q;
+
+    while (q--) {
+        int a, b, c;
+        vector<pair<int, int>> punkty;
+        
+        cin >> a;
+        for (int i = 0; i < a; i++) {
+            cin >> b >> c;
+            punkty.push_back({b, c});
+        }
+
+        sort(punkty.begin(), punkty.end());
+
+        int xo = (punkty[0].first + punkty[a-1].first);
+        int yo = (punkty[0].second + punkty[a-1].second);
+        bool k = true;
+
+        for (int i = 0; i < a; i++) {
+            if ((punkty[i].first + punkty[a-1-i].first) != xo || 
+                (punkty[i].second + punkty[a-1-i].second) != yo) {
+                k = false;
+                break;
+            }
+        }
+
+        cout << (k ? "tak\n" : "nie\n");
+    }
+}

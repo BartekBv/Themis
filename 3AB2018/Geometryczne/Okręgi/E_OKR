@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int l;
+
+int main() {
+
+    cin >> l;
+    while (l--) {
+        int x1, y1, r1, x2, y2, r2;
+        cin >> x1 >> y1 >> r1 >> x2 >> y2 >> r2;
+        int dx = x2 - x1;
+        int dy = y2 - y1;
+        int odl2 = dx * dx + dy * dy;  
+        if (odl2 == 0) {
+            if (r1 == r2)
+                cout << -1 << "\n"; 
+            else
+                cout << 0 << "\n";  
+        } else {
+            int sP = r1 + r2;
+            int rP = abs(r1 - r2);
+            int sP2 = sP * sP;
+            int rP2 = rP * rP;
+            
+            if (odl2 > sP2 || odl2 < rP2)
+                cout << 0 << "\n";
+            else if (odl2 == sP2 || odl2 == rP2)
+                cout << 1 << "\n";
+            else
+                cout << 2 << "\n";
+        }
+    }
+}
